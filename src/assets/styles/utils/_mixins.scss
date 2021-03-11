@@ -1,0 +1,66 @@
+/* src/assets/styles/utils/_mixins.scss  */
+
+//FlexBox
+@mixin isFlex($align: center, $justify: center, $direction: row, $wrap: wrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+//Full screen Background
+@mixin bgImage($url, $repeat: no-repeat, $position: center, $size: initial) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+  height: 100%;
+}
+
+//Breakpoints
+@mixin laptops {
+  @media (max-width: 1200px){
+    @content;
+  }
+}
+@mixin tablets {
+  @media (max-width: 992px){
+    @content;
+  }
+}
+@mixin phones {
+  @media (max-width: 767px){
+    @content;
+  }
+}
+// @mixin _576 {
+//   @media (max-width: 576px){
+//     @content;
+//   }
+// }
+// @mixin _480 {
+//   @media (max-width: 480px){
+//     @content;
+//   }
+// }
+// @mixin _350{
+//   @media (max-width: 350px){
+//     @content;
+//   }
+// }
+
+//Adaptive fonts
+@function vw($pixel, $defaultWidth: 1920px) {
+  @return $pixel * (100 / $defaultWidth) * 1vw;
+}
+
+@function calcVw($minPixel, $pixel) {
+  $addPixel: vw($pixel - $minPixel);
+  @return #{"calc(#{$minPixel} + #{$addPixel})"};
+}
+
+@mixin fontSizeAdaptive($minPixel, $pixel) {
+  font-size: $minPixel;
+  font-size: calcVw($minPixel, $pixel);
+}

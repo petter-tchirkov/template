@@ -1,0 +1,15 @@
+mixin menu(currentPage)
+  header.header
+    .header--container.container
+      .header--logo
+      nav.header--nav.menu
+        ul.menu--ul
+          li.menu--item
+            a.menu--link(href='/', class=currentPage === 'home' ? 'active' : '') Home
+          li.menu--item
+            a.menu--link(href='/about', class=currentPage === 'about' ? 'active' : '') About
+          li.menu--item
+            a.menu--link(href='/contact', class=currentPage === 'contact' ? 'active' : '') Contact
+          li.menu--item
+            a.menu--link(href='/how-it-works', class=currentPage === 'how-it-works' ? 'active' : '') How it Works
+
